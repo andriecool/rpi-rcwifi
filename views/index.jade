@@ -1,0 +1,29 @@
+html
+  head
+    title Raspberry PI RC Wifi
+  body
+    .container
+      h1 Controls
+      a(href="/led/left/100") Left
+      br
+      a(href="/led/right/100") Right
+      br
+      a(href="/led/both/100") Both
+      br
+      a(href="/led/reset/100") Reset
+
+    script(src='/js/jquery-2.1.4.min.js')
+    script.
+      $(function(){
+        console.log("Ready");
+        $('a').click(ledControl);
+        function ledControl(){
+          $.ajax({
+            type: "GET",
+            url: $(this).attr('href')
+          }).done(function(){
+
+          });
+          return false;
+        }
+      })
